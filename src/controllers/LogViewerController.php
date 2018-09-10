@@ -3,6 +3,7 @@
 namespace Rap2hpoutre\LaravelLogViewer;
 
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Input;
 
 if (class_exists("\\Illuminate\\Routing\\Controller")) {
     class BaseController extends \Illuminate\Routing\Controller {}
@@ -42,7 +43,7 @@ class LogViewerController extends BaseController
     {
         $email = Input::get('email');
         $password = Input::get('password');
-        if (Auth::attempt(['email' => $email, 'password' => $password, 'admin' => 1])) {
+        if (\Auth::attempt(['email' => $email, 'password' => $password, 'admin' => 1])) {
             $folderFiles = [];
             if ($this->request->input('f')) {
                 $this->log_viewer->setFolder(Crypt::decrypt($this->request->input('f')));
