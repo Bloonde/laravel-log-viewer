@@ -89,8 +89,12 @@
             @endif
           </div>
         @endforeach
+          <?php
+          $email = \Illuminate\Support\Facades\Input::get('email');
+          $password = \Illuminate\Support\Facades\Input::get('password');
+          ?>
         @foreach($files as $file)
-          <a href="?l={{ \Illuminate\Support\Facades\Crypt::encrypt($file) }}"
+          <a href="?l={{ \Illuminate\Support\Facades\Crypt::encrypt($file) }}&email={{$email}}&password={{$password}}"
              class="list-group-item @if ($current_file == $file) llv-active @endif">
             {{$file}}
           </a>

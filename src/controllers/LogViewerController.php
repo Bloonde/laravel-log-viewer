@@ -2,6 +2,7 @@
 
 namespace Rap2hpoutre\LaravelLogViewer;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
 
@@ -79,7 +80,7 @@ class LogViewerController extends BaseController
             }
 
             return app('view')->make('laravel-log-viewer::log', $data);
-        }
+        }else{echo "Permiso denegado"};
     }
 
     /**
